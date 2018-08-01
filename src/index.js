@@ -7,9 +7,10 @@ import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-if (module.hot) {
-  module.hot.accept('./print.js', function() {
-    console.log('Accepting the updated printMe module!');
-    // printMe();
-  })
-}
+// 用命令行参数 --hot以后 貌似可以不用这里了
+// if (module.hot) {
+//   module.hot.accept('./App.js', function() {
+//     console.log('Accepting the updated printMe module!');
+//     // printMe();
+//   })
+// }
