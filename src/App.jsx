@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        Hello React 太棒了 彩虹 枫叶 害怕 发如雪
+        Hello React 太棒了 彩虹 枫叶 害怕 发如雪 温暖的风
 
       </div>
     );
