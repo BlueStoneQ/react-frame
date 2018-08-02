@@ -3,13 +3,13 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, 'src/index.js'),
+  entry: path.join(__dirname, '../src/index.js'),
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '../dist'),
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, './dist'),
+    contentBase: path.join(__dirname, '../dist'),
     // 这个host用ipconfig在dos中查到 然后手机只要和pc在统一局域网中 就可以访问这个 而且 是pc与手机同步刷新的 可以暂时不考虑BrowserSync了
     host: '172.16.74.126',
     port: 3000,
