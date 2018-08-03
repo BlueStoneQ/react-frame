@@ -1,0 +1,17 @@
+# node_modules文件夹是默认忽略的
+# 忽略dist文件
+dist
+# 忽略项目中的所有非js/jsx文件
+**/*.css
+**/*.html
+**/*.svg
+**/*.png
+**/*.jpg
+**/*.gif
+**/*.webp
+**/*.json
+**/*.iml
+**/*.mp3
+**/*.scss
+**/*.sass
+**/*.less

@@ -1,7 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, '../src/index.js'),
@@ -16,17 +16,17 @@ module.exports = {
     host: '172.16.74.126',
     port: 3000,
     open: true,
-    compress: true,
+    compress: true
     // hot: true
   },
   resolve: {
     // 会对未加后缀的引入文件名去分别依次加上这几个后缀在工程中搜寻
-    extensions: [".js", ".json", ".jsx"],
+    extensions: ['.js', '.json', '.jsx'],
     // 给常用路径取个别名吧
     alias: {
-      'src': path.join(__dirname, '../src'),
-      'images': path.join(__dirname, '../src/images'),
-      'less': path.join(__dirname, '../src/style/less')
+      src: path.join(__dirname, '../src'),
+      images: path.join(__dirname, '../src/images'),
+      less: path.join(__dirname, '../src/style/less')
     }
   },
   module: {
@@ -34,10 +34,17 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: '/node_modules/',
+        enforce: 'pre',
+        use: [
+          'eslint-loader'
+        ]
+      }, {
+        test: /\.(js|jsx)$/,
+        exclude: '/node_modules/',
         use: [
           'babel-loader'
         ]
-      },{
+      }, {
         test: /\.html$/,
         use: [
           {
@@ -84,4 +91,4 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
-};
+}
