@@ -25,7 +25,8 @@ module.exports = {
     // 给常用路径取个别名吧
     alias: {
       'src': path.join(__dirname, '../src'),
-      'images': path.join(__dirname, '../src/images')
+      'images': path.join(__dirname, '../src/images'),
+      'less': path.join(__dirname, '../src/style/less')
     }
   },
   module: {
@@ -44,6 +45,17 @@ module.exports = {
             options: {
               attrs: [':data-src']
             }
+          }
+        ]
+      }, {
+        test: /\.(css|less)$/,
+        use: [
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader'
+          }, {
+            loader: 'less-loader'
           }
         ]
       }, {
