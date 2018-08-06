@@ -1,15 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const merge = require('webpack-merge')
+const common = require('./webpack.common.config')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-module.exports = {
-  entry: path.join(__dirname, '../src/index.js'),
-  output: {
-    path: path.join(__dirname, '../dist'),
-    publicPath: '/',
-    filename: '[hash]bundle.js'
-  },
+module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, '../dist'),
@@ -32,67 +28,11 @@ module.exports = {
     }
   },
   // 这个应该是成产时的config中写  -- build就是生产环境
-  mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: '/node_modules/',
-        enforce: 'pre',
-        use: [
-          'eslint-loader'
-        ]
-      }, {
-        test: /\.(js|jsx)$/,
-        exclude: '/node_modules/',
-        use: [
-          'babel-loader'
-        ]
-      }, {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              attrs: [':data-src']
-            }
-          }
-        ]
-      }, {
-        test: /\.(css|less)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          }, {
-            loader: 'css-loader'
-          }, {
-            loader: 'less-loader'
-          }
-        ]
-      }, {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name]2.[ext]',
-              outputpath: 'img/'
-            }
-          }
-        ]
-      }
-    ]
-  },
+  // mode: 'production',
+
   plugins: [
-    // 其实我觉得删除这种粗活用rimraf 也可以搞定 写在脚本里哈哈
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'HMR',
-      filename: path.join(__dirname, '../dist/index.html'),
-      // 根据我们本地的index.html生成服务器--服务器在内存上啊喂 --上的index.html
-      template: path.join(__dirname, '../src/template/index.html')
-    }),
+    // https://www.webpackjs.com/plugins/named-modules-plugin/
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
-}
+})
