@@ -22,3 +22,8 @@ A webApp for everyone who loves Acg. It`s the first WebApp of me.
 2. 手机要保持与pc在同一局域网中，我是直接电脑开个wife，手机连上就ok了
 3. 当然，端口号保持一致是必须的
 
+## React栈中用webpack-dev-server进行HRM 有个神器
+[react-hot-loader](https://www.webpackjs.com/guides/hot-module-replacement/#其他代码和框架)
+
+
+

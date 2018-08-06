@@ -9,7 +9,8 @@
     "build": "webpack --config ./build/webpack.prod.config.js",
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.jsx src",
-    "lint-fix": "eslint --ext .js,.jsx src --fix"
+    "lint-fix": "eslint --ext .js,.jsx src --fix",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-hot-loader": "^4.3.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
