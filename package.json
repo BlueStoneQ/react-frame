@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1 ",
     "start": "webpack-dev-server --hot --config ./build/webpack.dev.config.js",
     "build": "webpack --config ./build/webpack.prod.config.js",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "lint": "eslint --ext .js,.jsx src",
+    "lint-fix": "eslint --ext .js,.jsx src --fix"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/BlueStoneQ/acg-box#readme",
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
