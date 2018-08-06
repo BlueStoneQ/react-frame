@@ -31,6 +31,8 @@ module.exports = {
       less: path.join(__dirname, '../src/style/less')
     }
   },
+  // 这个应该是成产时的config中写  -- build就是生产环境
+  mode: 'production',
   module: {
     rules: [
       {

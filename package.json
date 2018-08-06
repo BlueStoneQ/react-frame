@@ -12,6 +12,10 @@
     "lint-fix": "eslint --ext .js,.jsx src --fix",
     "watch": "webpack --watch"
   },
+  "sideEffects": [
+    "*.css",
+    "*.less"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BlueStoneQ/acg-box.git"
