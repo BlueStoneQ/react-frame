@@ -31,6 +31,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: '/node_modules/',
+        include: path.resolve('src'),
         enforce: 'pre',
         use: [
           'eslint-loader'
@@ -38,6 +39,7 @@ module.exports = {
       }, {
         test: /\.(js|jsx)$/,
         exclude: '/node_modules/',
+        include: path.resolve('src'),
         use: [
           'babel-loader'
         ]
@@ -59,13 +61,30 @@ module.exports = {
           use: ['css-loader', 'less-loader']
         })
       }, {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpe?g|gif)$/,
         use: [
+          // url-可以不用使用file-loader
+          // {
+          //   loader: 'file-loader',
+          //   options: {
+          //     name: '[name]-[hash].[ext]',
+          //     outputPath: 'img'
+          //   }
+          // }
+          // https://blog.csdn.net/huangpb123/article/details/78561963
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
+              limit: 8192,
               name: '[name]-[hash].[ext]',
               outputPath: 'img'
+              // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
+            }
+          }, {
+            // https://github.com/tcoopman/image-webpack-loader
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true
             }
           }
         ]
