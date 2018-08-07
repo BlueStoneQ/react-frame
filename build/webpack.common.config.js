@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     publicPath: '/',
-    filename: '[hash][name].bundle.js'
+    filename: '[name]-[hash].bundle.js'
   },
   resolve: {
     // 会对未加后缀的引入文件名去分别依次加上这几个后缀在工程中搜寻
@@ -59,13 +59,13 @@ module.exports = {
           use: ['css-loader', 'less-loader']
         })
       }, {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[name]2.[ext]',
-              outputpath: 'img/'
+              name: '[name]-[hash].[ext]',
+              outputPath: 'img'
             }
           }
         ]
