@@ -12,9 +12,10 @@ import Icon from 'images/logo.jpg'
 class App extends Component {
   render () {
     return (
-      <div className='app'>
+      <div className='app font-app'>
         Hello React 太棒了 彩虹 枫叶 害怕 发如雪 温暖的风
         的承诺书  React-hot-loader  Acg-Box  5.cube(): {cube(6)}  123
+        tongjuecanliu
         <Game />
         <div className='img-box'>
           {/* { myIcon } */}

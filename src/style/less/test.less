@@ -1,9 +1,29 @@
+/* 字体 */
+@font-face {
+  font-family: 'ssFont';
+  src: url('../font/Serendipity-Script/Serendity-Script.eot') format('embedded-opentype');
+  src: url('../font/Serendipity-Script/Serendity-Script.eot#iefix') format('embeded-opentype'),
+       url('../font/Serendipity-Script/Serendity-Script.woff2') format('woff2'),
+       url('../font/Serendipity-Script/Serendity-Script.woff') format('woff'),
+       url('../font/Serendipity-Script/Serendity-Script.ttf') format('truetype'),
+       url('../font/Serendipity-Script/Serendity-Script.svg#defineName') format('svg');
+
+  font-weight: 600;
+  font-style: normal;
+}
+
 .app {
   background-color: aqua;
-  color: #f00;
+  color: #fff;
   // 这里不能使用设置的alias 使用项目中的相对路径/绝对路径 
   background-image: url('../../images/logo.jpg');
   .img-box {
     border: 2px solid #0f0;
   }
+}
+
+/*字体样式永远单独定义*/
+.font-app {
+  font-family: 'ssFont', 'sans-serif';
+  font-size: 20px;
 }

@@ -63,7 +63,7 @@ module.exports = {
       }, {
         test: /\.(png|svg|jpe?g|gif)$/,
         use: [
-          // url-可以不用使用file-loader
+          // url-可以不用使用file-loader,但是file-loader还是要安装的
           // {
           //   loader: 'file-loader',
           //   options: {
@@ -87,6 +87,12 @@ module.exports = {
               disable: true
             }
           }
+        ]
+      }, {
+        // https://www.webpackjs.com/guides/asset-management/#加载字体
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        use: [
+          'file-loader'
         ]
       }
     ]
