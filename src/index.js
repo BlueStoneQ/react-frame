@@ -4,6 +4,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './js/App'
+// https://www.webpackjs.com/guides/code-splitting/#动态导入-dynamic-imports-
+// https://github.com/stefanpenner/es6-promise
+require('es6-promise').polyfill()
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

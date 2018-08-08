@@ -2,6 +2,7 @@
  * 这个应该是把公共的部分提供给webpack.dev.config.js和webpack.prod.config.js使用
  */
 const path = require('path')
+// const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
@@ -10,7 +11,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     publicPath: '/',
-    filename: '[name]-[hash].bundle.js'
+    // https://segmentfault.com/q/1010000011438869/a-1020000011441168
+    filename: process.env.NODE_ENV !== 'production' ? '[name].[hash:7].bundle.js' : '[name].[chunkhash].bundle.js'
   },
   resolve: {
     // 会对未加后缀的引入文件名去分别依次加上这几个后缀在工程中搜寻
@@ -65,7 +67,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: '[name]-[hash].[ext]',
+              name: 'img/[name].[hash:7].[ext]',
               outputPath: 'img'
               // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
             }
@@ -81,7 +83,26 @@ module.exports = {
         // https://www.webpackjs.com/guides/asset-management/#加载字体
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
         use: [
-          'file-loader'
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'font/[name].[hash:7].[ext]',
+              outputPath: 'font'
+              // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
+            }
+          }
+        ]
+      }, {
+        // https://www.webpackjs.com/guides/asset-management/#加载数据
+        test: /\.(csv|tsv)$/,
+        use: [
+          'csv-loader'
+        ]
+      }, {
+        test: /\.xml$/,
+        use: [
+          'xml-loader'
         ]
       }
     ]
@@ -95,5 +116,9 @@ module.exports = {
       // 根据我们本地的index.html生成服务器--服务器在内存上啊喂 --上的index.html
       template: path.join(__dirname, '../src/template/index.html')
     })
+    // https://www.webpackjs.com/guides/code-splitting/#防止重复-prevent-duplication-
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'common'
+    // })
   ]
 }
