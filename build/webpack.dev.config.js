@@ -29,7 +29,18 @@ module.exports = merge(common, {
   },
   // 这个应该是成产时的config中写  -- build就是生产环境
   // mode: 'production',
-
+  module: {
+    rules: [
+      {
+        test: /\.(css|less)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      }
+    ]
+  },
   plugins: [
     // https://www.webpackjs.com/plugins/named-modules-plugin/
     new webpack.NamedModulesPlugin(),

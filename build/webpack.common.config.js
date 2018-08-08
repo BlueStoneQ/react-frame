@@ -4,10 +4,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-// https://www.webpackjs.com/guides/production/#split-css
-// 使用extract-text-webpack-plugin遇见的坑
-// https://blog.csdn.net/gezilan/article/details/80020417
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, '../src/index.js'),
@@ -54,13 +50,6 @@ module.exports = {
           }
         ]
       }, {
-        test: /\.(css|less)$/,
-        // https://www.webpackjs.com/plugins/extract-text-webpack-plugin/#提取-sass-或-less
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
-      }, {
         test: /\.(png|svg|jpe?g|gif)$/,
         use: [
           // url-可以不用使用file-loader,但是file-loader还是要安装的
@@ -98,10 +87,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // https://www.webpackjs.com/plugins/extract-text-webpack-plugin/#修改文件名
-    new ExtractTextPlugin({
-      filename: 'style.css'
-    }),
     // 其实我觉得删除这种粗活用rimraf 也可以搞定 写在脚本里哈哈
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
