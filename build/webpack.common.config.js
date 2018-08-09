@@ -67,7 +67,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'img/[name].[hash:7].[ext]',
+              name: '[name].[hash:7].[ext]',
               outputPath: 'img'
               // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
             }
@@ -87,7 +87,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'font/[name].[hash:7].[ext]',
+              name: '[name].[hash:7].[ext]',
               outputPath: 'font'
               // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
             }
