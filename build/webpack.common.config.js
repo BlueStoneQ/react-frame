@@ -5,44 +5,51 @@ const path = require('path')
 // const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const config = require('./config')
+
+const ROOT_PATH = config.ROOT_PATH
+const SRC_PATH = config.SRC_PATH
+const BUILD_PATH = config.BUILD_PATH
 
 module.exports = {
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.resolve(SRC_PATH, 'index.jsx'),
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: BUILD_PATH,
     publicPath: '/',
     // https://segmentfault.com/q/1010000011438869/a-1020000011441168
-    filename: process.env.NODE_ENV !== 'production' ? '[name].[hash:7].bundle.js' : '[name].[chunkhash].bundle.js'
+    filename: process.env.NODE_ENV !== 'production' ? 'js/[name].[hash:7].bundle.js' : 'js/[name].[chunkhash].bundle.js'
   },
   resolve: {
     // 会对未加后缀的引入文件名去分别依次加上这几个后缀在工程中搜寻
     extensions: ['.js', '.json', '.jsx'],
     // 给常用路径取个别名吧
     alias: {
-      src: path.join(__dirname, '../src'),
-      images: path.join(__dirname, '../src/images'),
-      less: path.join(__dirname, '../src/style/less')
+      src: SRC_PATH,
+      images: path.resolve(SRC_PATH, 'images'),
+      less: path.resolve(SRC_PATH, 'style', 'font')
     }
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: '/node_modules/',
-        include: path.resolve('src'),
+        include: SRC_PATH,
+        exclude: path.resolve(ROOT_PATH, 'node_modules'),
         enforce: 'pre',
         use: [
           'eslint-loader'
         ]
       }, {
         test: /\.(js|jsx)$/,
-        exclude: '/node_modules/',
-        include: path.resolve('src'),
+        include: SRC_PATH,
+        exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           'babel-loader'
         ]
       }, {
         test: /\.html$/,
+        include: path.resolve(SRC_PATH, 'template'),
+        exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           {
             loader: 'html-loader',
@@ -53,6 +60,8 @@ module.exports = {
         ]
       }, {
         test: /\.(png|svg|jpe?g|gif)$/,
+        include: path.resolve(SRC_PATH, 'images'),
+        exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           // url-可以不用使用file-loader,但是file-loader还是要安装的
           // {
@@ -82,6 +91,8 @@ module.exports = {
       }, {
         // https://www.webpackjs.com/guides/asset-management/#加载字体
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        include: path.resolve(SRC_PATH, 'style', 'font'),
+        exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           {
             loader: 'url-loader',
@@ -111,10 +122,10 @@ module.exports = {
     // 其实我觉得删除这种粗活用rimraf 也可以搞定 写在脚本里哈哈
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'HMR',
-      filename: path.join(__dirname, '../dist/index.html'),
+      title: 'React frame',
+      filename: path.resolve(ROOT_PATH, 'dist/index.html'),
       // 根据我们本地的index.html生成服务器--服务器在内存上啊喂 --上的index.html
-      template: path.join(__dirname, '../src/template/index.html')
+      template: path.resolve(SRC_PATH, 'template/index.html')
     })
     // https://www.webpackjs.com/guides/code-splitting/#防止重复-prevent-duplication-
     // new webpack.optimize.CommonsChunkPlugin({
