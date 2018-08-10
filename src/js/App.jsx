@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
-import Game from './components/Game'
+import Game from './components/reactGame/Game'
 import '../style/less/test.less'
 import '../style/less/reactGame.css'
-import { cube } from './components/math'
+import { cube } from './components/webpackTest/math'
 import Icon from 'images/logo.jpg'
 
 // var myIcon = new Image()
