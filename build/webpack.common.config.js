@@ -25,8 +25,10 @@ module.exports = {
     // 给常用路径取个别名吧
     alias: {
       src: SRC_PATH,
+      page: path.resolve(SRC_PATH, 'js', 'page'),
+      components: path.resolve(SRC_PATH, 'js', 'components'),
       images: path.resolve(SRC_PATH, 'images'),
-      less: path.resolve(SRC_PATH, 'style', 'font')
+      less: path.resolve(SRC_PATH, 'style', 'less')
     }
   },
   module: {

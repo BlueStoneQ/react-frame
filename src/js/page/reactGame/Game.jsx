@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react'
 import Board from './Board'
+import '../../../style/less/reactGame.css'
 
 class Game extends Component {
   constructor () {
@@ -84,7 +85,7 @@ class Game extends Component {
       <div className='game'>
         <div className='game-board'>
           <Board
-            squares={current.squares}
+            squares={current.squares || []}
             onClick={(i) => this.handleClick(i)}
           />
         </div>
