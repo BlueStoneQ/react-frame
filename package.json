@@ -31,9 +31,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-hot-loader": "^4.3.4",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "react-hot-loader": "^4.3.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -61,7 +59,6 @@
     "image-webpack-loader": "^4.3.1",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
-    "redux-devtools": "^3.4.1",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
