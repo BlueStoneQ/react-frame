@@ -53,7 +53,6 @@ class TodoList extends Component {
   }
   render () {
     const { todoList } = this.props.store
-    console.log(`TodoList中的list: ${todoList}`)
     return (
       <div className='todo-list-wrap'>
         { this.getItemsRender(todoList) }

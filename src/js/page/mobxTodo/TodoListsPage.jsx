@@ -12,15 +12,16 @@ const todoListStore = new TodoListStore()
 const testData = [
   '人间失格',
   '太宰治',
-  '生而为人'
+  '生而为人',
+  '追梦赤子心',
+  '当幸福来敲门',
+  '十月的天空 The Sky in october'
 ]
 
 class TodoListsPage extends Component {
   componentDidMount () {
-    console.log('开始渲染mobx')
     const { setValue } = todoListStore
     setValue('todoList', testData)
-    console.log(`此刻的 todoList: ${todoListStore.todoList}`)
   }
   render () {
     return (

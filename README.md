@@ -2,10 +2,17 @@
 A frame for React with webpack. It provides React + Redux + React-router-dom + ES6 + HRM + mobile synchronization.
 And it will grow up and publish to the npm.
 
-# ver.0
+# 迭代企划
+## ver.0
 边做边设计吧 哪怕迭代 时间就在这里 容不得再踌躇了 肉贴肉搏杀吧
 磨刀不误砍柴功 + 俯瞰的大局观 
 各个功能模块可以独立开发 样式 jsx/js 等
+以后不要一次提交太多
+一个功能写完就提交
+要不然后面翻阅起来查找当时解决问题的关键点 关键点就不明确了
+## ver.1
+需求驱动加入mocha等
+
 ## 约定
 按功能模块放在src/page 下 每一个功能模块{ 页面 + 组件 + 独立的一个样式文件在style下 }
 ## 搭建架子
@@ -44,6 +51,10 @@ configure({ enforceActions: true })
 ```
 [csdn帖子](https://blog.csdn.net/greekmrzzj/article/details/79861787)
 [mobx3->mobx4迁徙说明](https://github.com/mobxjs/mobx/wiki/Migrating-from-mobx-3-to-mobx-4#things-that-just-have-moved)
+
+## React-router-dom使用遇到的坑啊
+所以，用HashRouter吧
+[帖子](https://www.cnblogs.com/erduyang/p/6757788.html)
 
 # 参考
 [webpack官网中文](https://www.webpackjs.com/guides/code-splitting/)
