@@ -62,7 +62,7 @@ module.exports = {
         ]
       }, {
         test: /\.(png|svg|jpe?g|gif)$/,
-        include: path.resolve(ROOT_PATH, 'assets', 'images'),
+        include: path.resolve(ROOT_PATH, 'assets'),
         exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           // url-可以不用使用file-loader,但是file-loader还是要安装的
@@ -125,9 +125,14 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'React frame',
+      // favicon一般默认生成在项目根目录下 所以 模板文件中需要引入
+      favicon: path.resolve(ROOT_PATH, 'assets/favicon.png'),
       filename: path.resolve(ROOT_PATH, 'dist/index.html'),
       // 根据我们本地的index.html生成服务器--服务器在内存上啊喂 --上的index.html
-      template: path.resolve(SRC_PATH, 'template/index.html')
+      template: path.resolve(SRC_PATH, 'template/index.ejs'),
+      minify: {
+        removeAttributeQuotes: true // 移除属性的引号
+      }
     })
     // https://www.webpackjs.com/guides/code-splitting/#防止重复-prevent-duplication-
     // new webpack.optimize.CommonsChunkPlugin({
