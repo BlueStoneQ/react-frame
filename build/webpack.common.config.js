@@ -27,7 +27,7 @@ module.exports = {
       src: SRC_PATH,
       page: path.resolve(SRC_PATH, 'js', 'page'),
       components: path.resolve(SRC_PATH, 'js', 'components'),
-      images: path.resolve(SRC_PATH, 'images'),
+      images: path.resolve(ROOT_PATH, 'assets', 'images'),
       less: path.resolve(SRC_PATH, 'style', 'less')
     }
   },
@@ -62,7 +62,7 @@ module.exports = {
         ]
       }, {
         test: /\.(png|svg|jpe?g|gif)$/,
-        include: path.resolve(SRC_PATH, 'images'),
+        include: path.resolve(ROOT_PATH, 'assets', 'images'),
         exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           // url-可以不用使用file-loader,但是file-loader还是要安装的
@@ -79,7 +79,7 @@ module.exports = {
             options: {
               limit: 8192,
               name: '[name].[hash:7].[ext]',
-              outputPath: 'img'
+              outputPath: 'static/img'
               // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
             }
           }, {
@@ -93,7 +93,7 @@ module.exports = {
       }, {
         // https://www.webpackjs.com/guides/asset-management/#加载字体
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
-        include: path.resolve(SRC_PATH, 'style', 'font'),
+        include: path.resolve(ROOT_PATH, 'assets', 'font'),
         exclude: path.resolve(ROOT_PATH, 'node_modules'),
         use: [
           {
@@ -101,7 +101,7 @@ module.exports = {
             options: {
               limit: 8192,
               name: '[name].[hash:7].[ext]',
-              outputPath: 'font'
+              outputPath: 'static/font'
               // pulicPath: 项目部署后找取图片的路径 例如图片放在CDN可以写图片的CDN路径
             }
           }

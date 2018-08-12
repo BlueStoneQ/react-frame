@@ -35,7 +35,8 @@ module.exports = merge(common, {
   plugins: [
     // https://www.webpackjs.com/plugins/extract-text-webpack-plugin/#修改文件名
     new ExtractTextPlugin({
-      filename: 'style.css'
+      filename: 'static/css/[name].css',
+      allChunks: true
     }),
     // https://www.webpackjs.com/guides/tree-shaking/#压缩输出
     new UglifyJsPlugin({
