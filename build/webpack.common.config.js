@@ -131,7 +131,7 @@ module.exports = {
       // 根据我们本地的index.html生成服务器--服务器在内存上啊喂 --上的index.html
       template: path.resolve(SRC_PATH, 'template/index.ejs'),
       minify: {
-        removeAttributeQuotes: true // 移除属性的引号
+        // removeAttributeQuotes: true // 移除属性的引号 --- favicon会不生效？？
       }
     })
     // https://www.webpackjs.com/guides/code-splitting/#防止重复-prevent-duplication-
