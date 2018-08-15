@@ -5,25 +5,32 @@ And it will grow up and publish to the npm.
 # 命令行
 
 ## npm start
-启动本地服务器 开发调试时使用
+启动本地服务器 开发调试时使用  
+```
+启动前:
+1. 先在dos中ipconfig查找本机所在局域网地址ipv4
+2. 然后把这个值给config/webpack.dev.config.js中的host字段
+3.若有移动端联调，请保证移动端与pc在同一局域网中，可以pc开个wife，手机连上即可
+```
 
 ## npm run build 
-打包项目 提供给服务器
+打包项目 提供给服务器<br/>
 
 ## npm run clean
-删除dist目录(之前打包的文件)
+删除dist目录(之前打包的文件)<br/>
 
 ## npm run lint
-对js/jsx及src下的文件进行eslint代码规范检查
+对js/jsx及src下的文件进行eslint代码规范检查<br/>
 
 ## npm run lint-fix
-对js/jsx及src下的文件进行eslint代码不规范的地方进行规范化修补(一般不这样用 因为有些自动修复的调整很奇怪)
+对js/jsx及src下的文件进行eslint代码不规范的地方进行规范化修补(一般不这样用 因为有些自动修复的调整很奇怪)<br/>
 
 ## npm run watch
-启用webpack的watch模式进行打包（该模式下 代码一有所改动就会自动打包）(在satrt中 因为HRM被启动 所以该选项会默认开启)
+启用webpack的watch模式进行打包（该模式下 代码一有所改动就会自动打包）(在satrt中 因为HRM被启动 所以该选项会默认开启)<br/>
 
 
 # 目录说明
+```
 —— assets                                 *// 放置静态文件的目录*
  |—— font                                   // 放置字体文件
  |—— images                                 // 放置图片
@@ -48,26 +55,27 @@ And it will grow up and publish to the npm.
  |—— style                                  // 放置样式文件
    |—— less                                   **// 放置less文件 less中的文件名与 src/page 下的各个页面名一一对应**
  |—— template                               // 放置模板文件 提供给webpack的HtmlWebpackPlugin 这里我们就用html了 同时也是根DOM元素的所在
- |—— index.jsx                              // 将React 根组件挂载到真实的DOM上            
+ |—— index.jsx                              // 将React 根组件挂载到真实的DOM上       
+ ```     
 
 # 迭代企划
 ## ver.0
-边做边设计吧 哪怕迭代 时间就在这里 容不得再踌躇了 肉贴肉搏杀吧
-磨刀不误砍柴功 + 俯瞰的大局观 
-各个功能模块可以独立开发 样式 jsx/js 等
-以后不要一次提交太多
-一个功能写完就提交
-要不然后面翻阅起来查找当时解决问题的关键点 关键点就不明确了
+边做边设计吧 哪怕迭代 时间就在这里 容不得再踌躇了 肉贴肉搏杀吧<br />
+磨刀不误砍柴功 + 俯瞰的大局观<br />
+各个功能模块可以独立开发 样式 jsx/js 等<br />
+以后不要一次提交太多<br />
+一个功能写完就提交<br />
+要不然后面翻阅起来查找当时解决问题的关键点 关键点就不明确了<br />
 
 **[2018-9-12]**
-至此 React-frame-work ver.0版终于搭建好了
-React + webpack + HRM + babel(es6/7) + eslint + mobx + React-router-dom + 基本的示例
-可以进行基本的前后端分离模式下 -- 前端独立开发
-后期在项目实际业务中 发现的大的不足和更新 会及时更新到ver.1中
-而小的不足  会继续在ver.0 版本中升级  例如图片等base路径的配置
-愿这个脚手架着装成长 成为一个具有生产力的优秀辅助
-后期准备放到npm上 到时候 可以像create-react-app一样 一个命令行就把整个项目架子给你生成好
-里面的几个例子暂时留着做参考
+至此 React-frame-work ver.0版终于搭建好了<br />
+React + webpack + HRM + babel(es6/7) + eslint + mobx + React-router-dom + 移动端同步刷新 + 基本的示例<br />
+可以进行基本的前后端分离模式下 -- 前端独立开发<br />
+后期在项目实际业务中 发现的大的不足和更新 会及时更新到ver.1中<br />
+而小的不足  会继续在ver.0 版本中升级  例如图片等base路径的配置<br />
+愿这个脚手架着装成长 成为一个具有生产力的优秀辅助<br />
+后期准备放到npm上 到时候 可以像create-react-app一样 一个命令行就把整个项目架子给你生成好<br />
+里面的几个例子暂时留着做参考<br />
 ### 遗留问题：
 1. favicon 问题的解决
 2. json-loader 引入
