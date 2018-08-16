@@ -84,6 +84,7 @@ React + webpack + HRM + babel(es6/7) + eslint + mobx + React-router-dom + 移动
 5. cross-env
 6. 以前用过一个全屏报错标红的包 记不起名字了 后面加上 挺好用的
 7. axios
+8. [分离js文件--webpack3->webpack4升级](https://blog.csdn.net/harsima/article/details/80819747)
 
 ## ver.1
 需求驱动加入mocha等

@@ -5,11 +5,15 @@ const path = require('path')
 // const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+// https://www.npmjs.com/package/mini-css-extract-plugin
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./config')
 
 const ROOT_PATH = config.ROOT_PATH
 const SRC_PATH = config.SRC_PATH
 const BUILD_PATH = config.BUILD_PATH
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: path.resolve(SRC_PATH, 'index.jsx'),
@@ -17,7 +21,7 @@ module.exports = {
     path: BUILD_PATH,
     publicPath: '/',
     // https://segmentfault.com/q/1010000011438869/a-1020000011441168
-    filename: process.env.NODE_ENV !== 'production' ? 'js/[name].[hash:7].bundle.js' : 'js/[name].[chunkhash].bundle.js'
+    filename: devMode ? 'js/[name].678[hash:7].bundle.js' : 'js/123[name].[chunkhash].bundle.js'
   },
   resolve: {
     // 会对未加后缀的引入文件名去分别依次加上这几个后缀在工程中搜寻
@@ -59,6 +63,15 @@ module.exports = {
               attrs: [':data-src']
             }
           }
+        ]
+      }, {
+        test: /\.(css|less)$/,
+        include: path.resolve(SRC_PATH, 'style', 'less'),
+        exclude: path.resolve(ROOT_PATH, 'node_modules'),
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader'
         ]
       }, {
         test: /\.(png|svg|jpe?g|gif)$/,
@@ -133,6 +146,12 @@ module.exports = {
       minify: {
         // removeAttributeQuotes: true // 移除属性的引号 --- favicon会不生效？？
       }
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? '[name].css' : 'static/style/[name].[contenthash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css'
     })
     // https://www.webpackjs.com/guides/code-splitting/#防止重复-prevent-duplication-
     // new webpack.optimize.CommonsChunkPlugin({

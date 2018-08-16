@@ -2,12 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.config')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const CleanWebpackPlugin = require('clean-webpack-plugin')
-const config = require('./config')
-
-const ROOT_PATH = config.ROOT_PATH
-const SRC_PATH = config.SRC_PATH
 
 module.exports = merge(common, {
   mode: 'development',
@@ -24,20 +18,6 @@ module.exports = merge(common, {
   },
   // 这个应该是成产时的config中写  -- build就是生产环境
   // mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.(css|less)$/,
-        include: path.resolve(SRC_PATH, 'style', 'less'),
-        exclude: path.resolve(ROOT_PATH, 'node_modules'),
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
-      }
-    ]
-  },
   plugins: [
     // https://www.webpackjs.com/plugins/named-modules-plugin/
     new webpack.NamedModulesPlugin(),
