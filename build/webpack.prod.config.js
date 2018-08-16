@@ -32,7 +32,37 @@ module.exports = merge(common, {
         },
         canPrint: true
       })
-    ]
+    ],
+    splitChunks: {
+      chunks: 'async',
+      // 大于30KB才单独分离成chunk
+      minSize: 30000,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true,
+      cacheGroups: {
+        default: {
+          priority: -20,
+          reuseExistingChunk: true
+        },
+        vendors: {
+          name: 'vendors',
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          chunks: 'all'
+        },
+        echarts: {
+          name: 'echarts',
+          chunks: 'all',
+          // 对echarts进行单独优化，优先级较高
+          priority: 20,
+          test: function (module) {
+            var context = module.context
+            return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0)
+          }
+        }
+      }
+    }
   },
   plugins: [
     // https://www.webpackjs.com/guides/production/#指定环境
