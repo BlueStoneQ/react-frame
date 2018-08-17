@@ -151,8 +151,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: devMode ? '[name].css' : 'static/style/[name].[contenthash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css'
+      filename: devMode ? '[name].css' : 'static/style/[name].[contenthash:7].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[contenthash:7].css'
     })
     // https://www.webpackjs.com/guides/code-splitting/#防止重复-prevent-duplication-
     // new webpack.optimize.CommonsChunkPlugin({
