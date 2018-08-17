@@ -22,7 +22,7 @@ module.exports = {
     path: BUILD_PATH,
     publicPath: '/',
     // https://segmentfault.com/q/1010000011438869/a-1020000011441168
-    filename: devMode ? 'js/[name].678[hash:7].bundle.js' : 'js/123[name].[chunkhash].bundle.js'
+    filename: devMode ? 'js/[name].[hash:7].bundle.js' : 'js/[name].[chunkhash:7].bundle.js'
   },
   resolve: {
     // 会对未加后缀的引入文件名去分别依次加上这几个后缀在工程中搜寻
