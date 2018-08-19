@@ -78,7 +78,7 @@ React + webpack + HRM + babel(es6/7) + eslint + mobx + React-router-dom + 移动
 里面的几个例子暂时留着做参考<br />
 ### 遗留问题：
 1. favicon 问题的解决
-2. json-loader 引入
+2. ~~json-loader 引入~~
 3. mobx-react-devtools
 4. nodemon
 5. cross-env
@@ -133,6 +133,10 @@ configure({ enforceActions: true })
 ## React-router-dom使用遇到的坑啊
 所以，用HashRouter吧
 [帖子](https://www.cnblogs.com/erduyang/p/6757788.html)
+
+## 关于json-loader的引入
+
+[webpack 2.0以上的版本，默认支持json文件的导入](https://www.webpackjs.com/loaders/json-loader/)
 
 # 参考
 [webpack官网中文](https://www.webpackjs.com/guides/code-splitting/)

@@ -5,7 +5,7 @@
  * 3- 该组件要传给app.js（虚拟root）
  */
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 /**
  * 引入组件
@@ -15,12 +15,12 @@ import { Game } from '../page/reactGame'
 import { TodoListsPage } from '../page/mobxTodo'
 
 const RouterMap = (props) => (
-  <div>
+  <Switch>
     <Route exact path='/' component={FirstTest} />
     <Route path='/firstTest' component={FirstTest} />
     <Route path='/game' component={Game} />
     <Route path='/todoListsPage' component={TodoListsPage} />
-  </div>
+  </Switch>
 )
 
 export default RouterMap
