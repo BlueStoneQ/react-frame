@@ -139,7 +139,7 @@ configure({ enforceActions: true })
 [webpack 2.0以上的版本，默认支持json文件的导入](https://www.webpackjs.com/loaders/json-loader/)
 
 # 参考
-[webpack官网中文](https://www.webpackjs.com/guides/code-splitting/)
+[webpack官网中文](https://www.webpackjs.com/guides/code-splitting/) <br />
 [17年6月的一篇博客](https://segmentfault.com/a/1190000009952845)
 
 
