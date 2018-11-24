@@ -1,5 +1,5 @@
 # acg-box
-A frame for React with webpack. It provides React + Redux + React-router-dom + ES6 + HRM + mobile synchronization.
+A frame for React with webpack. It provides React + mobx + React-router-dom + ES6 + HRM + mobile synchronization.
 And it will grow up and publish to the npm.
 
 # 命令行
